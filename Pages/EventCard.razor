@@ -1,0 +1,18 @@
+﻿@page "/"
+@using blazor.Share
+@using blazor.Models
+
+<PageTitle>Event Card Component</PageTitle>
+<CardComponent card="cartaNueva" ></CardComponent>
+
+
+@code {
+    private Card cartaNueva = new(){
+        Title = "Prueba",
+        Description = "Descripción del evento de prueba",
+        EventName = "Nombre del evento de prueba",
+        EventDate = DateTime.Now,
+        EventLocation = "Ubicación del evento de prueba",
+        ImageUrl = ""
+    };
+}

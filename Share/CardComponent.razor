@@ -1,0 +1,23 @@
+@* CardComponent.razor *@
+@using blazor.Models
+@typeparam TCard where TCard : Card
+@if (card != null)
+{
+    <div class="card" style="width: 18rem;">
+        <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title">
+        <div class="card-body">
+            <h5 class="card-title">@card.Title</h5>
+            <p class="card-text">@card.Description</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Event Name:</strong> @card.EventName</li>
+                <li class="list-group-item"><strong>Date:</strong> @card.EventDate.ToShortDateString()</li>
+                <li class="list-group-item"><strong>Location:</strong> @card.EventLocation</li>
+            </ul>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+   public TCard? card { get; set; } 
+}

@@ -10,7 +10,7 @@
             <p class="card-text">@card.Description</p>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><strong>Event Name:</strong> @card.EventName</li>
-                <li class="list-group-item"><strong>Date:</strong> @card.EventDate.ToShortDateString()</li>
+                <li class="list-group-item"><strong>Date:</strong> @card.EventDate?.ToShortDateString()</li>
                 <li class="list-group-item"><strong>Location:</strong> @card.EventLocation</li>
             </ul>
         </div>

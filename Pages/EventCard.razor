@@ -1,18 +1,21 @@
 ﻿@page "/"
 @using blazor.Share
 @using blazor.Models
+@inject EventService EventService
 
 <PageTitle>Event Card Component</PageTitle>
-<CardComponent card="cartaNueva" ></CardComponent>
 
+<h3>Eventos guardados</h3>
 
-@code {
-    private Card cartaNueva = new(){
-        Title = "Prueba",
-        Description = "Descripción del evento de prueba",
-        EventName = "Nombre del evento de prueba",
-        EventDate = DateTime.Now,
-        EventLocation = "Ubicación del evento de prueba",
-        ImageUrl = ""
-    };
+@if (!EventService.GetEvents().Any())
+{
+    <p>No hay eventos aún.</p>
 }
+else
+{
+    @foreach (var card in EventService.GetEvents())
+    {
+        <CardComponent card="card" />
+        <hr />
+    }
+}    

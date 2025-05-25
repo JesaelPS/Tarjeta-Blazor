@@ -1,0 +1,37 @@
+﻿@page "/card-creator"
+@using blazor.Share
+@using blazor.Models
+@inject EventService EventService
+@inject NavigationManager Navigation
+
+<PageTitle>Card Creator</PageTitle>
+
+<h1>Card Creator</h1>
+<EditForm Model="@card" OnValidSubmit="Guardar">
+    <InputText @bind-Value="card.Title" class="form-control" placeholder="Título" style="margin:0.5em" required/>
+    <InputText @bind-Value="card.Description" class="form-control" placeholder="Descripción" style="margin:0.5em"  required/>
+    <InputText @bind-Value="card.EventName" class="form-control" placeholder="Nombre del Evento" style="margin:0.5em"  required/>
+    <InputDate @bind-Value="card.EventDate" class="form-control" style="margin:0.5em"/>
+    <InputText @bind-Value="card.EventLocation" class="form-control" placeholder="Ubicación"  style="margin:0.5em" required/>
+    <InputText @bind-Value="card.ImageUrl" class="form-control" placeholder="URL Imagen" style="margin:0.5em" required/>
+    
+    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+</EditForm>
+
+
+
+<hr />
+
+<h4>Vista previa de la tarjeta</h4>
+<CardComponent card="card"></CardComponent>
+
+@code {
+    private Card card = new Card();
+
+    private void Guardar()
+    {
+        EventService.AddEvent(card);
+        card = new Card(); // limpia para el siguiente
+       
+    }
+}
